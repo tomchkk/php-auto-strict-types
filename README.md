@@ -1,32 +1,38 @@
-# php-auto-strict-types README
+# PHP Auto Strict Types
 
-## Features
+Personal fork of [PHP - Auto Strict Types](https://github.com/jacovanc/php-auto-strict-types)
+by jacovanc. Adds `declare(strict_types=1);` to PHP files before they are saved.
 
-php-auto-strict-types automatically adds `declare(strict_types=1);` to your PHP files on save, enforcing strict type declarations in your project. 
+```php
+<?php
 
-It intelligently detects whether a file already contains the strict types declaration and only adds it if necessary. Additionally, the extension respects the PHP opening tag (`<?php`) in your file, ensuring correct syntax.
+declare(strict_types=1);
 
-## Requirements
+namespace App;
+```
 
-There are no specific requirements for this extension, other than having Visual Studio Code installed.
+Existing declarations are preserved, including declarations with different
+spacing and an explicit `strict_types=0`. New declarations use the document's
+line endings and are included in the original save.
 
-## Extension Settings
+The extension handles PHP documents saved to local files. A document must begin
+with `<?php` and have no PHP closing tag. Closing-tag text inside strings or
+block comments is allowed. Documents with unfinished strings or comments are
+skipped. The header check handles whitespace, comments and `declare` statements.
 
-This extension does not require any specific settings. It works out-of-the-box once installed.
+## Installation
 
-## Known Issues
+In VS Code, select **Extensions > … > Install from VSIX…** and choose the
+installer. Disable the original `jacovanc.php-auto-strict-types` extension when
+using this fork.
 
-No known issues at the moment. If you encounter any problems, please open an issue in the GitHub repository.
+## Development
 
-## Release Notes
-This is pre-release. Expect issues.
-### 0.0.12
+See the [development guide](https://github.com/tomchkk/php-auto-strict-types/blob/main/CONTRIBUTING.md)
+for setup, testing, debugging and building a VSIX installer.
 
-Initial release of php-auto-strict-types.
+## Licence
 
-- Automatically adds `declare(strict_types=1);` to PHP files on save.
-- Respects existing PHP opening tags.
-- Checks the entire file to avoid duplicate declarations.
-
-# TODO
-- [] Trim spacing around opening <?php tags before adding declaration
+The original Apache 2.0 licence is preserved in `LICENSE`. This fork changes the
+declaration formatting and save handling, and uses the `tomchkk` publisher
+identity for personal installation.
