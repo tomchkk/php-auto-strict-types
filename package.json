@@ -1,17 +1,17 @@
 {
   "name": "php-auto-strict-types",
-  "displayName": "PHP - Auto Strict Types",
+  "displayName": "PHP - Auto Strict Types (Tom)",
   "description": "Automatically add strict types declaration on save to PHP files.",
-  "version": "0.0.12",
-  "icon": "images/icon.png",
+  "version": "0.1.0",
+  "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.86.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jacovanc/php-auto-strict-types.git"
+    "url": "https://github.com/tomchkk/php-auto-strict-types.git"
   },
-  "publisher": "jacovanc",
+  "publisher": "tomchkk",
   "categories": [
     "Programming Languages",
     "Formatters",
@@ -21,24 +21,33 @@
   "activationEvents": [
     "onLanguage:php"
   ],
-  "main": "./out/extension.js",
+  "main": "./build/src/main.js",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
+    "lint": "eslint src test --ext ts",
     "test": "vscode-test"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@types/vscode": "^1.86.2",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
-    "@vscode/test-cli": "^0.0.8",
-    "@vscode/test-electron": "^2.3.9",
+    "@typescript-eslint/eslint-plugin": "^8.72.2",
+    "@typescript-eslint/parser": "^8.72.2",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.1.0",
     "eslint": "^8.57.0",
     "typescript": "^5.3.3"
+  },
+  "license": "Apache-2.0",
+  "overrides": {
+    "glob@>=9.0.0": "^14.0.5",
+    "minimatch@>=7.0.0": "^11.0.5",
+    "serialize-javascript": "^7.1.4",
+    "mocha": {
+      "diff": "^8.0.3"
+    }
   }
 }
